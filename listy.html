@@ -50,18 +50,18 @@
 <script>
 	function makeNewDiv() {
 		/* make the div and its text */
-		let element = document.createElement("div")
-		element.innerHTML = document.getElementById("inpList").value
-		element.className = "listy"
+		let element = document.createElement("div");
+		element.innerHTML = document.getElementById("inpList").value;
+		element.className = "listy";
 
 		/* add it to the container */
-		var listyItems = document.getElementsByClassName("listy")
-		var check = 0
+		var listyItems = document.getElementsByClassName("listy");
+		var check = 0;
 
 		if (listyItems.length > 9) {
 
 			for (let item of listyItems) {
-				console.log(item.innerHTML)
+				console.log(item.innerHTML);
 				if (item.innerHTML === document.getElementById("inpList").value) {
 					item.remove();
 					console.log("We are getting rid of duplicates.");
@@ -79,7 +79,7 @@
 
 		}
 
-		document.getElementById('target').appendChild(element)
+		document.getElementById('target').appendChild(element);
 
 	}
 

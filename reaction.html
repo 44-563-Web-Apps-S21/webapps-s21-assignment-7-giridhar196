@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Giridhar Addagalla Reaction Timer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-12">
+            <h2>Giridhar Addagalla Reaction Timer</h2>
+            <p id="target">Your time</p>
+            <p id="countdown">Count</p>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <button type="button" class="btn btn-info btn-md"
+                  onclick="startTime()">
+                  Start Timer </button>
+              </div>
+              <div class="col-md-2">
+                <button id="react" class="btn btn-info btn-md"
+                  onclick="recordReact()">
+                  React Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script> 
+    myTime = undefined;
+    function recordReact() {
+        myTime = Date.now();
+        console.log("Time : " + myTime);
+      }
+      function getRandomIntInclusive(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+        }
+  
+     
+  
+      function startTime() {
+          var countdown = getRandomIntInclusive(2, 10);
+           console.log(countdown);
+  
+  
+        for (var i = 0; i < 3; i++) {
+  
+          setTimeout(function (i) {
+            document.getElementById("countdown").innerHTML = i
+          }, (((countdown - 1) - i) * 1000), i);
+  
+        }
+  
+        setTimeout(function (i) {
+          console.log(i)
+          if (myTime == undefined) {
+            document.getElementById("target").innerHTML = "Too Slow"
+            document.getElementById("react").classList.add("btn-info");
+            document.getElementById("react").classList.remove("btn-primary");
+          }
+          else {
+            var buttonTime = Date.now();
+            var elapsedTime = buttonTime - myTime;
+            document.getElementById("target").innerHTML = "Time was " + elapsedTime;
+            document.getElementById("react").classList.add("btn-secondary");
+            document.getElementById("react").classList.remove("btn-success");
+          }
+        }, (countdown - 1)*1000)
+      }
+    </script>
+  </body>
+</html>

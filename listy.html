@@ -73,13 +73,14 @@
 				var removeItem = getRandomIntInclusive(0, 9);
 				console.log(removeItem);
 
-				
+				listyItems[removeItem].remove();
 				console.log("We get rid of the " + removeItem + " item.");
 			}
 
 		}
 
-		
+		document.getElementById('target').appendChild(element)
+
 	}
 
 	function getRandomIntInclusive(min, max) {
